@@ -1,0 +1,201 @@
+!DOCTYPE html
+html
+head
+	titlefirst Validationtitle
+head
+body
+
+	center
+	php
+	$nameError = ;
+	$idError = ;
+	$genderError = ;
+	$mailError = ;
+	$addressError = ;
+	$cityError = ;
+	$countryError = ;
+	$stateError = ;
+
+	if($_SERVER[REQUEST_METHOD] == POST){
+		
+		ID
+
+		if(empty($_REQUEST[studentId])){
+			echo ID Required;
+			echo br;
+		}
+		else {
+			echo Student ID  . $_POST[studentId];
+			echo br;
+		}
+
+		Name
+
+		if(empty($_REQUEST[studentName])){
+			echo Name Required;
+			echo br;
+		}
+		else {
+			echo Student Name  . $_POST[studentName];
+			echo br;
+		}
+
+		Gender
+
+		if(empty($_REQUEST[male])  && empty($_REQUEST[female])){
+			echo Gender Required;
+			echo br;
+		}
+		else if(!empty($_REQUEST[male])  && !empty($_REQUEST[female])){
+			echo One Gender Required;
+			echo br;
+		}
+		else {
+			if(empty($_REQUEST[male])){
+				echo Gender . $_POST[female];
+				echo br;
+			}
+			elseif(empty($_REQUEST[female])) {
+				echo Gender . $_POST[male];
+				echo br;
+			}
+
+		}
+
+		Email
+
+		if(empty($_REQUEST[studentEmail])){
+			echo Email Required;
+			echo br;
+		}
+		elseif($_POST[studentEmail] == @) {
+			echo Correct Email Required;
+			echo br;
+		}
+		else {
+			echo Student mail  . $_POST[studentEmail];
+			echo br;
+		}
+
+		Address
+
+		if(empty($_REQUEST[address])){
+			echo Address Required;
+			echo br;
+		}
+		else {
+			echo Address  . $_POST[address];
+			echo br;
+		}
+
+		echo Street Address  . $_POST[streetAddress];
+		echo br;
+		echo Address Line 2  . $_POST[addressLine2];
+		echo br;
+
+		State
+
+		if(empty($_REQUEST[state])){
+			echo State Required;
+			echo br;
+		}
+		else {
+			echo StateProvinceRegion  . $_POST[state];
+			echo br;
+		}
+
+		City		
+
+		if(empty($_REQUEST[city])){
+			echo City Required;
+			echo br;
+		}
+		else {
+			echo City  . $_POST[city];
+			echo br;
+		}
+
+		Country
+
+		if(empty($_REQUEST[country])){
+			echo Country Required;
+			echo br;
+		}
+		else {
+			echo Student mail  . $_POST[country];
+			echo br;
+		}
+
+		echo hr;
+
+	}
+	
+	center
+
+	form method=POST action=php echo htmlspecialchars($_SERVER[PHP_SELF]); 
+
+		labelStudent Id label
+		input type=text name=studentId required
+		br
+		spanphp echo $idError span
+		br
+
+		labelStudent Name label
+		input type=text name=studentName required
+		br
+		spanphp echo $nameError span
+		br
+
+		input type=checkbox id=male name=male value=Male
+		label for=maleMalelabelbr
+		input type=checkbox id=female name=female value=Female
+		label for=femaleFemalelabelbr
+		spanphp echo $genderError span
+		br
+
+		labelStudent Email label
+		input type=text name=studentEmail value=@ required
+		br
+		spanphp echo $mailError span
+		br
+
+		labelAddress label
+		input type=text name=address required
+		br
+		spanphp echo $addressError span
+		br
+
+		labelStreet Address label
+		input type=text name=streetAddress
+		br
+		labelAddress Line 2 label
+		input type=text name=addressLine2
+		br
+		labelStateProvinceRegion label
+		input type=text name=state required
+		spanphp echo $stateError span
+		br
+		labelCity label
+		input type=text name=city required
+		br
+		spanphp echo $cityError span
+		br
+		br
+
+		label for=CountryCountrylabel
+
+			select name=country id=country required
+  				option value=bangladeshBangladeshoption
+ 				option value=russianrussianoption
+ 			 	option value=AUSAUSoption
+  				option value=ukUKoption
+			select
+		spanphp echo $countryError span
+		br
+
+		input type=submit
+	
+	form
+
+body
+html
